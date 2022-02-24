@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="esercitazioneSanremo.dettagliCantanti" %>
+    <%@ page import= "java.util.*"%>
+    <%@ page import= "java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
        <head>
@@ -17,13 +20,26 @@
                 h5{
                     text-align:center;
                 }
-  
+                
             </style>
        </head>
        <%
+            Date data = new Date();
+            SimpleDateFormat formattazione = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+            String dataFormattata = formattazione.format(data);
+       %>
+       
+       <%
        session.setAttribute("token","true");
        String indice=request.getParameter("indice");
+       int indice2=Integer.valueOf(indice).intValue();
+
+       ArrayList<dettagliCantanti> array=(ArrayList<dettagliCantanti>)session.getAttribute("artisti");
+       array.get(indice2).setOrario(dataFormattata);
+
+		session.setAttribute("artisti",array);
        %>
+       
        <body>
                <h3>Cosa ne pensi di questo cantante?Lascia una recensione.</h3>
                

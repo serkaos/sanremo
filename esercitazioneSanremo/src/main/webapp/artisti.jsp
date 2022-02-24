@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="java.util.ArrayList" %>
     <%@ page import="esercitazioneSanremo.dettagliCantanti" %>
     <%@ page import= "java.util.*"%>
+    <%@ page import= "java.text.SimpleDateFormat" %>
    <!DOCTYPE html> 
    <html>
           <head>
@@ -31,7 +31,8 @@
          
          <body>
               <%
-     
+                      
+                 
                       Locale locale = request.getLocale();
                       String language = locale.getLanguage();
                       String country = locale.getCountry();
@@ -64,7 +65,6 @@
                  <br>
                  <h2><%=attuale.get("welcome") %> </h2>
                  <h3><%=attuale.get("click") %> </h3>
-
                  <br>
                  <br>
             
@@ -77,13 +77,13 @@
                  details.setCognome("Morandi");
                  details.setCanzone("Apri tutte le porte");
                  details.setImmagine("https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Gianni_Morandi_%28Italie%29%2C_Bestanddeelnr_923-3708.jpg/180px-Gianni_Morandi_%28Italie%29%2C_Bestanddeelnr_923-3708.jpg");
-                 
+    
                  dettagliCantanti details1 = new dettagliCantanti();
                  details1.setNome("Achille");
                  details1.setCognome("Lauro");
                  details1.setCanzone("Domenica");
                  details1.setImmagine("https://www.oaplus.it/wp-content/uploads/2020/02/lauro-sanremo.jpg");
-                 
+
                  dettagliCantanti details2 = new dettagliCantanti();
                  details2.setNome("Yuman");
                  details2.setCognome("...");
@@ -168,6 +168,7 @@
       <p class="card-text"><%=attuale.get("song") %>  <%=array.get(0).getCanzone() %></p>
        <a href="https://it.wikipedia.org/wiki/Gianni_Morandi">Chi è <%=array.get(0).getNome() %> <%= array.get(0).getCognome() %>?</a>
        <p class="card-text"><small class="text-muted">Voti positivi:0  Voti negativi:0 </small></p>
+       
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
       <a href="cantanteselezionato.jsp?indice=0" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -313,21 +314,23 @@
     </div>
   </div>
 </div>
-
+            
             <% }else{   
+            	
 
            ArrayList<dettagliCantanti> array=(ArrayList<dettagliCantanti>)session.getAttribute("artisti");
            String voto=request.getParameter("voto");
            int indice=Integer.valueOf(request.getParameter("indice")).intValue();
+           
            if(request.getParameter("votopos")!=null){
         	   int aumento=array.get(indice).getPos()+1;
         	   array.get(indice).setPos(aumento);
-           }else  if(request.getParameter("votoneg")!=null){
+        	  
+        	   }else  if(request.getParameter("votoneg")!=null){
         	   int aumento=array.get(indice).getNeg()+1;
         	   array.get(indice).setNeg(aumento);
         	   
            }
-
     		session.setAttribute("artisti",array);
            %>
 
@@ -339,6 +342,12 @@
       <p class="card-text"><%=attuale.get("song") %> <%=array.get(0).getCanzone() %></p>
        <a href="https://it.wikipedia.org/wiki/Gianni_Morandi">Chi è <%=array.get(0).getNome() %> <%= array.get(0).getCognome() %>?</a>
        <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(0).getPos() %>Voti negativi: <%=array.get(0).getNeg() %></small></p>
+       <%
+       if(array.get(0).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
       <a href="cantanteselezionato.jsp?indice=0" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -350,6 +359,12 @@
       <p class="card-text"><%=attuale.get("song") %> <%=array.get(1).getCanzone() %></p>
       <a href="https://it.wikipedia.org/wiki/Achille_Lauro_(cantante)">Chi è <%=array.get(1).getNome() %> <%= array.get(1).getCognome() %>?</a>
       <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(1).getPos() %>Voti negativi: <%=array.get(1).getNeg() %></small></p>
+       <%
+       if(array.get(0).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(1).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
       <a href="cantanteselezionato.jsp?indice=1" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -361,6 +376,12 @@
       <p class="card-text"><%=attuale.get("song") %> <%=array.get(2).getCanzone() %></p>
        <a href="https://it.wikipedia.org/wiki/Yuman#:~:text=Yuman%2C%20pseudonimo%20di%20Yuri%20Santos,)%2C%20%C3%A8%20un%20cantautore%20italiano.">Chi è <%=array.get(2).getNome() %> <%= array.get(2).getCognome() %>?</a>
        <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(2).getPos() %>Voti negativi: <%=array.get(2).getNeg() %></small></p>
+        <%
+       if(array.get(2).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
        <a href="cantanteselezionato.jsp?indice=2" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -377,6 +398,12 @@
       <p class="card-text"><%=attuale.get("song") %> <%=array.get(3).getCanzone() %></p>
       <a href="https://it.wikipedia.org/wiki/Ana_Mena">Chi è <%=array.get(3).getNome() %> <%= array.get(3).getCognome() %>?</a>
       <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(3).getPos() %>Voti negativi: <%=array.get(3).getNeg() %></small></p>
+       <%
+       if(array.get(3).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
       <a href="cantanteselezionato.jsp?indice=3" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -388,6 +415,12 @@
       <p class="card-text"><%=attuale.get("song") %> <%=array.get(4).getCanzone() %></p>
       <a href="https://it.wikipedia.org/wiki/Noemi_(cantante)">Chi è <%=array.get(4).getNome() %> <%= array.get(4).getCognome() %>?</a>
       <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(4).getPos() %>Voti negativi: <%=array.get(4).getNeg() %></small></p>
+       <%
+       if(array.get(0).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(4).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
       <a href="cantanteselezionato.jsp?indice=4" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -399,6 +432,12 @@
       <p class="card-text"><%=attuale.get("song") %> <%=array.get(5).getCanzone() %></p>
       <a href="https://it.wikipedia.org/wiki/La_Rappresentante_di_Lista">Chi è <%=array.get(5).getNome() %> <%= array.get(5).getCognome() %>?</a>
       <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(5).getPos() %>Voti negativi: <%=array.get(5).getNeg() %></small></p>
+       <%
+       if(array.get(5).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
        <a href="cantanteselezionato.jsp?indice=5" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -415,6 +454,12 @@
       <p class="card-text"><%=attuale.get("song") %> <%=array.get(6).getCanzone() %></p>
        <a href="https://it.wikipedia.org/wiki/Michele_Bravi">Chi è <%=array.get(6).getNome() %> <%= array.get(6).getCognome() %>?</a>
        <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(6).getPos() %>Voti negativi: <%=array.get(6).getNeg() %></small></p>
+        <%
+       if(array.get(6).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
       <a href="cantanteselezionato.jsp?indice=6" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -426,6 +471,12 @@
       <p class="card-text"><%=attuale.get("song") %><%=array.get(7).getCanzone() %></p>
        <a href="https://it.wikipedia.org/wiki/Massimo_Ranieri">Chi è <%=array.get(7).getNome() %> <%= array.get(7).getCognome() %>?</a>
        <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(7).getPos() %>Voti negativi: <%=array.get(7).getNeg() %></small></p>
+        <%
+       if(array.get(7).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
       <a href="cantanteselezionato.jsp?indice=7" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -438,6 +489,12 @@
        <a href="https://it.wikipedia.org/wiki/Mahmood">Chi è Mahmood?</a>
         <a href="https://it.wikipedia.org/wiki/Blanco_(cantante)">Chi è Blanco?</a>
         <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(8).getPos() %>Voti negativi: <%=array.get(8).getNeg() %></small></p>
+         <%
+       if(array.get(8).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
        <a href="cantanteselezionato.jsp?indice=8" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -454,6 +511,12 @@
       <p class="card-text"><%=attuale.get("song") %><%=array.get(9).getCanzone() %></p>
        <a href="https://it.wikipedia.org/wiki/Rkomi">Chi è <%=array.get(9).getNome() %> <%= array.get(9).getCognome() %>?</a>
        <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(9).getPos() %>Voti negativi: <%=array.get(9).getNeg() %></small></p>
+        <%
+       if(array.get(9).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
       <a href="cantanteselezionato.jsp?indice=9" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -465,6 +528,12 @@
       <p class="card-text"><%=attuale.get("song")%> <%=array.get(10).getCanzone() %></p>
        <a href="https://it.wikipedia.org/wiki/Dargen_D'Amico">Chi è <%=array.get(10).getNome() %> <%= array.get(10).getCognome() %>?</a>
        <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(10).getPos() %>Voti negativi: <%=array.get(10).getNeg() %></small></p>
+        <%
+       if(array.get(10).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
       <a href="cantanteselezionato.jsp?indice=10" class="btn btn-primary">Lascia un voto!</a>
     </div>
@@ -476,6 +545,12 @@
       <p class="card-text"><%=attuale.get("song")%> <%=array.get(11).getCanzone() %></p>
        <a href="https://it.wikipedia.org/wiki/Tananai">Chi è <%=array.get(11).getNome() %> <%= array.get(11).getCognome() %>?</a>
        <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(11).getPos() %>Voti negativi: <%=array.get(11).getNeg() %> </small></p>
+        <%
+       if(array.get(11).getOrario()!=null)
+       {
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+       }
+       %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
        <a href="cantanteselezionato.jsp?indice=11" class="btn btn-primary">Lascia un voto!</a>
     </div>
