@@ -6,7 +6,7 @@ public class dettagliCantanti {
     String cognome;
     String canzone;
     String immagine;
-	String orario;
+	String orario=null;
     int pos;
     int neg;
 	public dettagliCantanti() {

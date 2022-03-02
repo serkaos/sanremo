@@ -360,7 +360,7 @@
       <a href="https://it.wikipedia.org/wiki/Achille_Lauro_(cantante)">Chi è <%=array.get(1).getNome() %> <%= array.get(1).getCognome() %>?</a>
       <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(1).getPos() %>Voti negativi: <%=array.get(1).getNeg() %></small></p>
        <%
-       if(array.get(0).getOrario()!=null)
+       if(array.get(1).getOrario()!=null)
        {
     	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(1).getOrario()+" </small></p>");
        }
@@ -379,7 +379,7 @@
         <%
        if(array.get(2).getOrario()!=null)
        {
-    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(2).getOrario()+" </small></p>");
        }
        %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
@@ -401,7 +401,7 @@
        <%
        if(array.get(3).getOrario()!=null)
        {
-    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(3).getOrario()+" </small></p>");
        }
        %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
@@ -416,7 +416,7 @@
       <a href="https://it.wikipedia.org/wiki/Noemi_(cantante)">Chi è <%=array.get(4).getNome() %> <%= array.get(4).getCognome() %>?</a>
       <p class="card-text"><small class="text-muted">Voti positivi: <%=array.get(4).getPos() %>Voti negativi: <%=array.get(4).getNeg() %></small></p>
        <%
-       if(array.get(0).getOrario()!=null)
+       if(array.get(4).getOrario()!=null)
        {
     	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(4).getOrario()+" </small></p>");
        }
@@ -435,7 +435,7 @@
        <%
        if(array.get(5).getOrario()!=null)
        {
-    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(5).getOrario()+" </small></p>");
        }
        %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
@@ -457,7 +457,7 @@
         <%
        if(array.get(6).getOrario()!=null)
        {
-    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(6).getOrario()+" </small></p>");
        }
        %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
@@ -474,7 +474,7 @@
         <%
        if(array.get(7).getOrario()!=null)
        {
-    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(7).getOrario()+" </small></p>");
        }
        %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
@@ -492,7 +492,7 @@
          <%
        if(array.get(8).getOrario()!=null)
        {
-    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(8).getOrario()+" </small></p>");
        }
        %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
@@ -514,7 +514,7 @@
         <%
        if(array.get(9).getOrario()!=null)
        {
-    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(9).getOrario()+" </small></p>");
        }
        %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
@@ -531,7 +531,7 @@
         <%
        if(array.get(10).getOrario()!=null)
        {
-    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(10).getOrario()+" </small></p>");
        }
        %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
@@ -548,7 +548,7 @@
         <%
        if(array.get(11).getOrario()!=null)
        {
-    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(0).getOrario()+" </small></p>");
+    	   out.println("<p class=\"card-text\"><small class=\"text-muted\">Orario:"+array.get(11).getOrario()+" </small></p>");
        }
        %>
       <p class="card-text"><small class="text-muted">-Sanremo 2022</small></p>
